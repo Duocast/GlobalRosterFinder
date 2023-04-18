@@ -14,7 +14,7 @@ REQUIRED_COLUMNS = {
     'Business Group'
 }
 
-def find_salary_files(start_directory, valid_extensions=None):
+def find_matching_files(start_directory, valid_extensions=None):
     if valid_extensions is None:
         valid_extensions = ['.csv']
 
@@ -57,6 +57,7 @@ def main():
     Path(shared_folder).mkdir(parents=True, exist_ok=True)
 
     hostname = socket.gethostname()
+    
     valid_extensions = ['.csv']
     users_path = 'C:\\Users'
     for user in os.listdir(users_path):
@@ -65,9 +66,9 @@ def main():
             for user_folder in user_folders:
                 target_directory = os.path.join(user_path, user_folder)
                 if os.path.exists(target_directory):
-                    for salary_file in find_salary_files(target_directory, valid_extensions):
+                    for matched_file in find_matching_files(target_directory, valid_extensions):
                         dest_folder = get_destination_folder(shared_folder, hostname, user)
-                        copy_file_and_create_info_file(salary_file, dest_folder, hostname, user)
+                        copy_file_and_create_info_file(matched_file, dest_folder, hostname, user)
 
 if __name__ == "__main__":
     main()
