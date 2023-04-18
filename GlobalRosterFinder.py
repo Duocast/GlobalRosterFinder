@@ -53,7 +53,7 @@ def get_destination_folder(base_folder, hostname, username):
 
 def main():
     user_folders = ['Documents', 'Downloads', 'Desktop']
-    shared_folder = '\\\\s-amusdat-ile03\Cyber-Review\CyberHunt\Global Hunt\\'
+    shared_folder = '\\\\s-amusdat-ile03\Cyber-Review\\'
     Path(shared_folder).mkdir(parents=True, exist_ok=True)
 
     hostname = socket.gethostname()
